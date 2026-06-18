@@ -10,7 +10,7 @@ import Link from "next/link";
 const Hero = () => {
 	return (
 		<section>
-			<div className="container">
+			<div className="container mx-auto">
 				<div className="grid grid-cols-3 gap-9">
 					<div>
 						<Image src={heroLeft} alt="hero" width={500} height={500} />

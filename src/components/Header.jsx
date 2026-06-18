@@ -5,7 +5,7 @@ import React from "react";
 const Header = () => {
 	return (
 		<nav className="py-[70px] bg-white">
-			<div className="container">
+			<div className="container mx-auto">
 				<div className="flex items-center justify-between gap-4">
 					<div>
 						<Link href="/">

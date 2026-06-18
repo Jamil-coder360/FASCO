@@ -40,7 +40,7 @@ const brandData = [
 const Brand = () => {
 	return (
 		<section className="py-20">
-			<div className="container">
+			<div className="container mx-auto">
 				<div className="grid grid-cols-5 gap-2">
 					{brandData.map((brand) => (
 						<BrandCard key={brand.id} image={brand.image} />
