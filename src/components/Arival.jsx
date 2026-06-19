@@ -1,18 +1,50 @@
 "use client";
-import React, { useState } from "react";
+
+import { useEffect, useState } from "react";
+
 import Section from "./global/Section";
 import Container from "./global/Container";
 import ArivalCard from "./ArivalCard";
 import Button from "./global/Button";
 const categories = [
   "Men's Fashion",
-  "Women's Fashion",
+  "Women Fashion",
   "Women Accessories",
   "Men Accessories",
   "Discount Deals",
 ];
+
 const Arival = () => {
-  const [active, setActive] = useState("Women's Fashion");
+  const [active, setActive] = useState("Women Fashion");
+
+  const [product, setProduct] = useState([]); // ✅ MUST be array
+  // const [category ,setCategory] = useState("http://localhost:4000/arival");
+
+// for all data fetching
+  // useEffect(()=>{
+  //   fetch("http://localhost:4000/arival")
+  //       .then((res) => res.json())
+  //     .then((data) => setProduct(data));
+    
+
+  // },[]);
+console.log(product);
+// categorywise data fetching
+useEffect(() => {
+  fetch(`http://localhost:4000/arival?category=${active}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setProduct(data);
+    })
+}, [active]); // 🔥 IMPORTANT
+
+
+  const handleCategory = (category) => {
+    setActive(category);
+    // category(category);
+  };
+  
+
   return (
     <Section>
       <Container>
@@ -37,7 +69,7 @@ const Arival = () => {
                 return (
                   <button
                     key={category}
-                    onClick={() => setActive(category)}
+                    onClick={() => handleCategory(category)}
                     className={`
                 px-12 py-5 rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap
                 ${
@@ -53,7 +85,12 @@ const Arival = () => {
               })}
             </div>
           </div>
-          <ArivalCard />
+          <div className="grid grid-cols-3 gap-15.25">
+     {product.map((item) => (
+  <ArivalCard key={item._id} product={item} />
+))}
+            </div> 
+    
           <div className="flex items-center justify-center pt-12.5">
 
           <Button >
