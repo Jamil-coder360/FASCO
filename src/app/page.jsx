@@ -15,64 +15,64 @@ import Slide from "@/components/Slide";
 import Features from "@/components/Features";
 
 const brandData = [
-	{
-		id: 1,
-		image: brand1,
-	},
-	{
-		id: 2,
-		image: brand2,
-	},
-	{
-		id: 3,
-		image: brand3,
-	},
-	{
-		id: 4,
-		image: brand4,
-	},
-	{
-		id: 5,
-		image: brand5,
-	},
+  {
+    id: 1,
+    image: brand1,
+  },
+  {
+    id: 2,
+    image: brand2,
+  },
+  {
+    id: 3,
+    image: brand3,
+  },
+  {
+    id: 4,
+    image: brand4,
+  },
+  {
+    id: 5,
+    image: brand5,
+  },
 ];
 
 const Brand = () => {
-	return (
-		<section className="py-20">
-			<div className="container mx-auto">
-				<div className="grid grid-cols-5 gap-2">
-					{brandData.map((brand) => (
-						<BrandCard key={brand.id} image={brand.image} />
-					))}
-				</div>
-			</div>
-		</section>
-	);
+  return (
+    <section className="py-20">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-5 gap-2">
+          {brandData.map((brand) => (
+            <BrandCard key={brand.id} image={brand.image} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 const BrandCard = ({ image }) => {
-	return (
-		<div className="flex items-center justify-center">
-			<Image src={image} alt="brand" width={200} height={100} />
-		</div>
-	);
+  return (
+    <div className="flex items-center justify-center">
+      <Image src={image} alt="brand" width={200} height={100} />
+    </div>
+  );
 };
 
 const Home = () => {
-	return (
-		<>
-			<Hero />
-			<Brand />
-			<Deal />
-			<Arival />
-			<Slide />
-			<Features />
-			<Gallery />
-			<TestimonialSlider />
-			<Subscribe />
-		</>
-	);
+  return (
+    <>
+      <Hero />
+      <Brand />
+      <Deal />
+      <Arival />
+      <Slide />
+      <Features />
+      <Gallery />
+      <TestimonialSlider />
+      {/* <Subscribe /> */}
+    </>
+  );
 };
 
 export default Home;

@@ -21,22 +21,22 @@ const Arival = () => {
   // const [category ,setCategory] = useState("http://localhost:4000/arival");
 
 // for all data fetching
-  // useEffect(()=>{
-  //   fetch("http://localhost:4000/arival")
-  //       .then((res) => res.json())
-  //     .then((data) => setProduct(data));
+  useEffect(()=>{
+    fetch("http://localhost:4000/arival")
+        .then((res) => res.json())
+      .then((data) => setProduct(data));
     
 
-  // },[]);
+  },[]);
 console.log(product);
 // categorywise data fetching
-useEffect(() => {
-  fetch(`http://localhost:4000/arival?category=${active}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setProduct(data);
-    })
-}, [active]); // 🔥 IMPORTANT
+// useEffect(() => {
+//   fetch(`http://localhost:4000/arival?category=${active}`)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       setProduct(data);
+//     })
+// }, [active]); // 🔥 IMPORTANT
 
 
   const handleCategory = (category) => {
