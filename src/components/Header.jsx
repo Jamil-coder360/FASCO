@@ -27,7 +27,7 @@ const Header = () => {
 								<Link href="/contact">Packages</Link>
 							</li>
 							<li>
-								<Link href="/contact">Sign in</Link>
+								<Link href="/signin">Sign in</Link>
 							</li>
 						</ul>
 						<Link

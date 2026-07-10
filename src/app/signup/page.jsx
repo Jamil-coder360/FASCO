@@ -1,3 +1,4 @@
+"use client";
 import AuthComponent from "@/components/AuthComponent";
 import React from "react";
 import signUpImage from "@/app/assets/signup.png";
@@ -7,95 +8,130 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Signup = () => {
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// Handle form submission logic here
+		const formData = new FormData(e.target);
+		const data = {};
+		for (let [key,value] of formData) {
+			data[key]=value;
+		}
+		if (data.password !== data.confirmPassword) {
+			alert("Passwords do not match!");
+			return;
+		}
+		console.log(data);
+		e.target.reset();
+	};
+
 	return (
-		<div className="h-screen">
+		<div>
 			<AuthComponent img={signUpImage}>
-				<form className="max-w-[666px] pb-10">
-					<h3 className="text-2xl md:text-[30px] mb-8.5">Create Account</h3>
-					<div className="flex flex-wrap md:gap-16 items-center space-x-3 md:space-x-0">
-						<button className="w-[calc(50%-0.75rem)] md:w-[294px] flex items-center gap-2 rounded-lg border border-[#5B86E5] py-2 px-2 md:px-8 cursor-pointer">
+				<form onSubmit={handleSubmit} className="w-full">
+					<div className="mb-8">
+						<h3 className="text-2xl font-semibold text-[#111] sm:text-[30px]">
+							Create Account
+						</h3>
+						<p className="mt-2 text-sm text-[#838383]">
+							Join FASCO to discover curated fashion and exclusive offers.
+						</p>
+					</div>
+
+					<div className="flex flex-col gap-3 sm:flex-row">
+						<button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#5B86E5] bg-white px-4 py-3 text-sm font-medium text-[#1f1f1f] transition hover:bg-[#f5f8ff]">
 							<span>
 								<Image
 									src={googleImage}
-									width={36}
-									height={36}
+									width={28}
+									height={28}
 									alt="google image"
 								/>
 							</span>
 							<span>Sign up with Google</span>
 						</button>
-						<button className="w-[calc(50%-0.75rem)] md:w-[270px] flex items-center gap-2 rounded-lg border border-[#5B86E5] py-2 px-2 md:px-8 cursor-pointer">
+						<button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#5B86E5] bg-white px-4 py-3 text-sm font-medium text-[#1f1f1f] transition hover:bg-[#f5f8ff]">
 							<span>
 								<Image
 									src={gmailImage}
-									width={36}
-									height={36}
-									alt="google image"
+									width={28}
+									height={28}
+									alt="gmail image"
 								/>
 							</span>
 							<span>Sign up with Email</span>
 						</button>
 					</div>
 
-					<div className="pt-21 pb-16.5">
-						<p className="font-bold text-3xl text-center text-[#838383]">
-							-OR-
+					<div className="my-8 flex items-center gap-3">
+						<div className="h-px flex-1 bg-[#d8d8d8]" />
+						<p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#838383]">
+							Or
 						</p>
+						<div className="h-px flex-1 bg-[#d8d8d8]" />
 					</div>
 
-					<div className="grid grid-cols-2 gap-4.5">
-						<div className="border-b border-b-[#9D9D9D]">
+					<div className="grid gap-4 sm:grid-cols-2">
+						<div className="border-b border-b-[#9D9D9D] pb-2">
 							<input
+								name="firstName"
 								type="text"
 								placeholder="First Name"
-								className="border-none outline-0 leading-10 placeholder:text-[#9D9D9D]"
+								className="w-full border-none bg-transparent text-sm outline-none placeholder:text-[#9D9D9D]"
 							/>
 						</div>
-						<div className="border-b border-b-[#9D9D9D]">
+						<div className="border-b border-b-[#9D9D9D] pb-2">
 							<input
+								name="lastName"
 								type="text"
-								placeholder="Last Name "
-								className="border-none outline-0 leading-10 placeholder:text-[#9D9D9D]"
+								placeholder="Last Name"
+								className="w-full border-none bg-transparent text-sm outline-none placeholder:text-[#9D9D9D]"
 							/>
 						</div>
-						<div className="border-b border-b-[#9D9D9D]">
+						<div className="border-b border-b-[#9D9D9D] pb-2">
 							<input
+								name="email"
 								type="email"
 								placeholder="Email Address"
-								className="border-none outline-0 leading-10 placeholder:text-[#9D9D9D]"
+								className="w-full border-none bg-transparent text-sm outline-none placeholder:text-[#9D9D9D]"
 							/>
 						</div>
-						<div className="border-b border-b-[#9D9D9D]">
+						<div className="border-b border-b-[#9D9D9D] pb-2">
 							<input
+								name="phoneNumber"
 								type="text"
 								placeholder="Phone Number"
-								className="border-none outline-0 leading-10 placeholder:text-[#9D9D9D]"
+								className="w-full border-none bg-transparent text-sm outline-none placeholder:text-[#9D9D9D]"
 							/>
 						</div>
-						<div className="border-b border-b-[#9D9D9D]">
+						<div className="border-b border-b-[#9D9D9D] pb-2 ">
 							<input
+								name="password"
 								type="password"
 								placeholder="Password"
-								className="border-none outline-0 leading-10 placeholder:text-[#9D9D9D]"
+								className="w-full border-none bg-transparent text-sm outline-none placeholder:text-[#9D9D9D]"
 							/>
 						</div>
-						<div className="border-b border-b-[#9D9D9D]">
+						<div className="border-b border-b-[#9D9D9D] pb-2 ">
 							<input
+								name="confirmPassword"
 								type="password"
 								placeholder="Confirm Password"
-								className="border-none outline-0 leading-10 placeholder:text-[#9D9D9D]"
+								className="w-full border-none bg-transparent text-sm outline-none placeholder:text-[#9D9D9D]"
 							/>
 						</div>
 					</div>
 
-					<div className="flex items-center justify-center px-10 mt-11 pb-5">
-						<button className="w-full block text-center leading-10 py-2.5 bg-black text-white rounded-lg cursor-pointer">
+					<div className="mt-8">
+						<button
+							type="submit"
+							className="w-full rounded-lg bg-black py-3 text-center text-sm font-semibold text-white transition hover:bg-[#1c1c1c]"
+						>
 							Create Account
 						</button>
 					</div>
-					<p className="text-center text-[#838383]">
+					<p className="mt-5 text-center text-sm text-[#838383]">
 						Already have an account?{" "}
-						<Link href="/signin" className="text-[#5B86E5] underline">
+						<Link href="/signin" className="font-medium text-[#5B86E5] underline">
 							Login
 						</Link>
 					</p>
