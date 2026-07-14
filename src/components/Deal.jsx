@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import {useRef} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination"; // এটা add করো
@@ -36,6 +36,7 @@ const deals = [
 ];
 
 const Deal = () => {
+ const swiperRef = useRef(null);
   return (
     <Section className="py-20 bg-[#FAFAFA]">
       <Container className=" lg:!mr-0">
@@ -55,7 +56,7 @@ const Deal = () => {
             <Button>Buy Now</Button>
 
             <div className="mt-10">
-              <Arrow />
+              <Arrow swiperRef={swiperRef} />
             </div>
           </div>
           {/* <div> */}
@@ -70,6 +71,7 @@ const Deal = () => {
             centeredSlides={true}
             spaceBetween={30}
             className="deal_slider"
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
           >
             {deals.map((deal) => (
               <SwiperSlide key={deal.id}>

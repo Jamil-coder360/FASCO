@@ -1,4 +1,6 @@
 "use client";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 import AuthComponent from "@/components/AuthComponent";
 import React from "react";
 import signUpImage from "@/app/assets/signup.png";
@@ -6,8 +8,11 @@ import googleImage from "@/app/assets/google.png";
 import gmailImage from "@/app/assets/gmail.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
+	const {signup}  = React.useContext(AuthContext)
+	const router = useRouter();
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Handle form submission logic here
@@ -20,6 +25,8 @@ const Signup = () => {
 			alert("Passwords do not match!");
 			return;
 		}
+		signup(data.email, data.password)
+		router.push("/")
 		console.log(data);
 		e.target.reset();
 	};

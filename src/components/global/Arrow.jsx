@@ -2,17 +2,21 @@ import React from 'react'
 import { BsArrowLeft } from 'react-icons/bs';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const Arrow = () => {
+const Arrow = ({swiperRef}) => {
   return (
     <div className="flex items-center gap-4">
-        <span className="bg-[#ffffff] rounded-full p-5 shadow-2xl">
+        <button
+        onClick={() => swiperRef.current.slidePrev()}
+        className="bg-[#ffffff] rounded-full p-5 shadow-2xl">
 
         <FaChevronLeft />
-        </span>
-        <span className="bg-[#ffffff] rounded-full p-5 shadow-2xl">
+        </button>
+        <button
+        onClick={() => swiperRef.current.slideNext()}
+         className="bg-[#ffffff] rounded-full p-5 shadow-2xl">
 
         <FaChevronRight />
-        </span>
+        </button>
     </div>
   )
 }
