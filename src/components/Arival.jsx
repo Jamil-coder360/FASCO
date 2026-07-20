@@ -22,7 +22,7 @@ const Arival = () => {
 
 // for all data fetching
   useEffect(()=>{
-    fetch("http://localhost:4000/arival")
+    fetch("https://fasco-server.vercel.app/arival")
         .then((res) => res.json())
       .then((data) => setProduct(data));
     
