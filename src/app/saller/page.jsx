@@ -105,7 +105,7 @@ const handleAdd = async (e) => {
       createdAt: new Date(),
     };
 
-    await fetch("http://localhost:4000/arival", {
+    await fetch("https://fasco-server.vercel.app/arival", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
